@@ -2,12 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import CharactersBar from "./CharactersBar";
 
-function LevelCard({ image, level: title, characterList, onClick }) {
+function LevelCard({ image, title, characterList, onClick }) {
   return (
-    <div className="flex felx-col p-0" onClick={onClick}>
+    <div
+      className="max-w-sm flex flex-col p-0 border border-gray-300 rounded-lg cursor-pointer hover:shadow"
+      onClick={onClick}
+    >
       <img className="flex-grow" src={image} alt="preview" />
-      <div className="flex flex-row justify-between p-2">
-        <div className="text-xl">Level {title}</div>
+      <div className="flex flex-row justify-between items-center p-2">
+        <div className="text-xl">{title}</div>
         <CharactersBar
           characterList={characterList}
           shuoldDisplayName={false}
@@ -19,13 +22,8 @@ function LevelCard({ image, level: title, characterList, onClick }) {
 
 LevelCard.propTypes = {
   image: PropTypes.string,
-  title: PropTypes.number.isRequired,
-  characterList: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.string.isRequired,
-      name: PropTypes.string,
-    })
-  ),
+  title: PropTypes.string.isRequired,
+  characterList: PropTypes.arrayOf(PropTypes.string.isRequired),
   onClick: PropTypes.func,
 };
 

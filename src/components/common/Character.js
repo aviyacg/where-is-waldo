@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Character({ image, name }) {
   return (
     <div className="flex flex-col justify-center items-stretch">
-      <img src={image} alt="character" />
+      <img className="max-h-8" src={image} alt="character" />
       <div className="font-sans text-black text-sm">{name || undefined}</div>
     </div>
   );
