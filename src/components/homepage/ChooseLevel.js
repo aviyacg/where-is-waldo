@@ -1,32 +1,27 @@
 import React from "react";
 import LevelCard from "../common/LevelCard";
+import { useNavigate } from "react-router-dom";
 
-import level1IMG from "../../assets/images/cake-factory.jpg";
-import level2IMG from "../../assets/images/ski-slopes.jpg";
-import level3IMG from "../../assets/images/beach.jpg";
+import { useCurrentLevelUpdate, useLevelList } from "../../contex/LevelContex";
 
 function ChooseLevel() {
-  const levelsList = [
-    {
-      image: level1IMG,
-      title: "The cake factory",
-      characterList: ["waldo", "odlaw", "wenda"],
-    },
-    {
-      image: level2IMG,
-      title: "The ski slopes",
-      characterList: ["waldo", "odlaw", "wenda", "wizard"],
-    },
-    {
-      image: level3IMG,
-      title: "The beach",
-      characterList: ["waldo", "odlaw", "wenda", "wizard"],
-    },
-  ];
+  const levelsList = useLevelList();
+  const currentLevelUpdate = useCurrentLevelUpdate();
+  const navigate = useNavigate();
+  const playLevel = (level) => {
+    currentLevelUpdate(level);
+    navigate("/game");
+  };
   return (
-    <div className="grid grid-cols-3 gap-4 justify-items-center">
+    <div className="grid grid-cols-3 gap-4 justify-items-center p-4">
       {levelsList.map((level, index) => {
-        return <LevelCard key={index} {...level} />;
+        return (
+          <LevelCard
+            key={level.level}
+            {...level}
+            onClick={() => playLevel(level.level)}
+          />
+        );
       })}
     </div>
   );
