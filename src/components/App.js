@@ -1,11 +1,22 @@
-import ChooseLevel from "./homepage/ChooseLevel";
-import GoToLeaderboard from "./homepage/GoToLeaderboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Loading from "./common/Loading";
+import { CurrentLevelProvider, LevelListProvider } from "../contex/LevelContex";
+import Homepage from "./homepage/Homepage";
 function App() {
   return (
-    <div className="bg-gray-50 h-screen w-full">
-      <ChooseLevel />
-      <GoToLeaderboard />
-    </div>
+    <CurrentLevelProvider>
+      <LevelListProvider>
+        <BrowserRouter>
+          <div className="bg-gray-50 min-h-screen w-full">
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/game" element={<Loading />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </LevelListProvider>
+    </CurrentLevelProvider>
   );
 }
 
