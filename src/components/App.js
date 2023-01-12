@@ -1,21 +1,26 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Loading from "./common/Loading";
-import { CurrentLevelProvider, LevelListProvider } from "../contex/LevelContex";
+import { CurrentLevelProvider } from "../contex/LevelContex";
+import Game from "./game/Game";
 import Homepage from "./homepage/Homepage";
 function App() {
   return (
     <CurrentLevelProvider>
-      <LevelListProvider>
-        <BrowserRouter>
-          <div className="bg-gray-50 min-h-screen w-full">
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/game" element={<Loading />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </LevelListProvider>
+      <BrowserRouter>
+        <div className="bg-gray-50 min-h-screen w-full">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/game" element={<Game />} />
+            <Route
+              path="/leaderboard"
+              element={
+                <h1 className="h-screen text-2xl flex justify-center items-center">
+                  leaderboard
+                </h1>
+              }
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </CurrentLevelProvider>
   );
 }
