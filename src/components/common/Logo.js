@@ -1,9 +1,10 @@
 import React from "react";
 import waldo_logo from "../../assets/images/waldo-logo.jpg";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Logo() {
-  const gotoHomepage = () => redirect("/");
+  const navigate = useNavigate();
+  const gotoHomepage = () => navigate("/");
   return (
     <div
       className="bg-white h-20 w-fit flex items-center hover:cursor-pointer"
