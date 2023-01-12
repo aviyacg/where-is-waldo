@@ -20,8 +20,9 @@ function CharactersBar({ characterList, shouldDisplayName }) {
         return (
           <Character
             key={index}
-            image={imageMap[character]}
-            name={shouldDisplayName ? character : undefined}
+            image={imageMap[character.name || character]}
+            name={shouldDisplayName ? character.name || character : undefined}
+            isFound={character.isFound || false}
           />
         );
       })}
@@ -30,7 +31,7 @@ function CharactersBar({ characterList, shouldDisplayName }) {
 }
 
 CharactersBar.propTypes = {
-  characterList: PropTypes.arrayOf(PropTypes.string.isRequired),
+  characterList: PropTypes.array,
   shouldDisplayName: PropTypes.bool,
 };
 
