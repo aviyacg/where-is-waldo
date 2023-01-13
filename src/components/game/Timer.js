@@ -9,7 +9,7 @@ function Timer({ elapsedTime }) {
     .padStart(2, "0")}`;
 
   // Render the elapsed time in the mm:ss format
-  return <div>{elapsedTimeFormatted}</div>;
+  return <div className="text-4xl font-semibold">{elapsedTimeFormatted}</div>;
 }
 
 export default Timer;

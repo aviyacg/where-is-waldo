@@ -3,15 +3,16 @@ import PropTypes from "prop-types";
 
 function Character({ image, name, isFound }) {
   return (
-    <div className="relative flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center">
       <img
-        className={"max-h-8" + (isFound ? " grayscale" : "")}
+        className={"max-h-9" + (isFound ? " grayscale" : "")}
         src={image}
         alt="character"
       />
       <div
         className={
-          "font-sans text-sm" + (isFound ? " text-gray-600" : " text-gray-900")
+          "font-sans text-sm font-semibold" +
+          (isFound ? " text-gray-600" : " text-gray-900")
         }
       >
         {name}

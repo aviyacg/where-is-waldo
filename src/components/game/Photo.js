@@ -1,7 +1,7 @@
 function Photo({ image, handleClick }) {
   return (
     <img
-      className="max-w-full"
+      className=" m-auto border-8 border-blue-600 cursor-stick"
       src={image}
       alt="where's waldo"
       onClick={handleClick}
