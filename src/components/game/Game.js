@@ -5,6 +5,7 @@ import {
   useCurrentLevelIdUpdate,
   getCurrentLevel,
 } from "../../contex/LevelContex";
+import { submitScore as submit } from "../../firebase/firestore";
 
 import GameHeader from "./GameHeader";
 import Photo from "./Photo";
@@ -112,14 +113,11 @@ function Game() {
     }
   }, [isGameOver]);
 
-  // --------------------- TO DO --------------------
-  // This function submits the users name with the elapsed time and levelId to the server
-  function submitScore(name) {
-    // TO DO
-    alert(
-      `${name} finished successfully level ${levelId} in ${elapsedTime} seconds`
-    );
-  }
+  // // --------------------- TO DO --------------------
+  // // This function submits the users name with the elapsed time and levelId to the server
+  // async function submitScore(name) {
+  //   submit(name, elapsedTime, levelId);
+  // }
 
   return (
     <div className="p-4 relative">
@@ -129,7 +127,7 @@ function Game() {
         <SelectCharacter {...{ clickPosition, characterList, tagCharacter }} />
       )}
       {isGameOver && (
-        <SubmitScoreForm {...{ title, elapsedTime, submitScore }} />
+        <SubmitScoreForm {...{ title, elapsedTime, submit, levelId }} />
       )}
     </div>
   );
